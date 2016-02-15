@@ -1,23 +1,23 @@
 {
-    "name": "statical/slim-static",
-    "description": "Static proxy implementation for Slim framework",
+    "name": "beaver-dev/slim-static",
+    "description": "Static proxy implementation for Slim framework v3",
     "keywords": ["slim", "statical", "facade", "static proxy"],
-    "homepage": "http://github.com/johnstevenson/slim-static",
+    "homepage": "http://github.com/beaver-dev/slim-static",
     "license": "MIT",
     "authors": [
         {
-            "name": "John Stevenson",
-            "email": "john-stevenson@blueyonder.co.uk"
+            "name": "Valentin Stutz",
+            "email": "stutz.valentin@gmail.com"
         }
     ],
 
     "require": {
         "php": ">=5.3.0",
-        "slim/slim": "~2.3",
-        "statical/statical": "~1.0"
+        "slim/slim": "~3.1",
+        "statical/statical": "~1.1"
     },
 
     "autoload": {
-        "psr-4": {"Statical\\SlimStatic\\": "src/"}
+        "psr-4": {"Beaver\\SlimStatic\\": "src/"}
     }
 }

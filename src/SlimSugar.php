@@ -1,5 +1,5 @@
 <?php
-namespace Statical\SlimStatic;
+namespace Beaver\SlimStatic;
 
 abstract class SlimSugar extends \Statical\BaseProxy
 {

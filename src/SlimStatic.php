@@ -1,5 +1,5 @@
 <?php
-namespace Statical\SlimStatic;
+namespace Beaver\SlimStatic;
 
 class SlimStatic
 {
@@ -9,7 +9,7 @@ class SlimStatic
     * @param \Slim\Slim $slim
     * @return \Statical\Manager
     */
-    public static function boot(\Slim\Slim $slim)
+    public static function boot(\Slim\App $slim)
     {
         // set Slim application for syntactic-sugar proxies
         SlimSugar::$slim = $slim;
@@ -55,11 +55,11 @@ class SlimStatic
     static protected function addServices($manager, $slim)
     {
         $services = array(
+            'Config' => 'settings',
             'Input' => 'request',
-            'Log' => 'log',
             'Request' => 'request',
             'Response' => 'response',
-            'View'     => 'view',
+            'Router' => 'router'
         );
 
         $container = array($slim, '__get');
