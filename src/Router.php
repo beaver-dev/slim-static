@@ -3,8 +3,8 @@ namespace Beaver\SlimStatic;
 
 class Router extends SlimSugar
 {
-    public static function pathFor()
+    public static function pathFor($name, array $data = [], array $queryParams = [])
     {
-        return call_user_func_array(array(static::$slim, 'pathFor'), func_get_args());
+        return static::$slim->getContainer()['router']->pathFor($name, $data, $queryParams);
     }
 }
