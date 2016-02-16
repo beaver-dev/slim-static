@@ -1,5 +1,5 @@
 <?php
-namespace Statical\SlimStatic;
+namespace Beaver\SlimStatic;
 
 class SlimStatic
 {
@@ -9,7 +9,7 @@ class SlimStatic
     * @param \Slim\Slim $slim
     * @return \Statical\Manager
     */
-    public static function boot(\Slim\Slim $slim)
+    public static function boot(\Slim\App $slim)
     {
         // set Slim application for syntactic-sugar proxies
         SlimSugar::$slim = $slim;
@@ -18,12 +18,12 @@ class SlimStatic
         $manager = new \Statical\Manager();
 
         // Add proxies that use the Slim instance
-        $aliases = array('App', 'Config', 'Route');
+        $aliases = array('App', 'Config', 'Route', 'Router');
         static::addInstances($aliases, $manager, $slim);
 
         // Add special-case Slim container instance
         $aliases = array('Container');
-        static::addInstances($aliases, $manager, $slim->container);
+        static::addInstances($aliases, $manager, $slim->getContainer());
 
         // Add services that are resolved out of the Slim container
         static::addServices($manager, $slim);
@@ -56,13 +56,12 @@ class SlimStatic
     {
         $services = array(
             'Input' => 'request',
-            'Log' => 'log',
             'Request' => 'request',
             'Response' => 'response',
             'View'     => 'view',
         );
 
-        $container = array($slim, '__get');
+        $container = $slim->getContainer();
 
         foreach ($services as $alias => $id) {
             $proxy = __NAMESPACE__.'\\'.$alias;

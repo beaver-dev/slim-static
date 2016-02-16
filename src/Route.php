@@ -1,5 +1,5 @@
 <?php
-namespace Statical\SlimStatic;
+namespace Beaver\SlimStatic;
 
 class Route extends SlimSugar
 {
@@ -46,10 +46,5 @@ class Route extends SlimSugar
     public static function any()
     {
     	return call_user_func_array(array(static::$slim, 'any'), func_get_args());
-    }
-
-    public static function urlFor()
-    {
-        return call_user_func_array(array(static::$slim, 'urlFor'), func_get_args());
     }
 }

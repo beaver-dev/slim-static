@@ -1,5 +1,5 @@
 <?php
-namespace Statical\SlimStatic;
+namespace Beaver\SlimStatic;
 
 class App extends \Statical\BaseProxy
 {

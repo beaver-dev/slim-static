@@ -1,15 +1,15 @@
 <?php
-namespace Statical\SlimStatic;
+namespace Beaver\SlimStatic;
 
 class Config extends SlimSugar
 {
 	public static function get($key)
 	{
-		return static::$slim->config($key);
+		return static::$slim->getContainer()['settings'][$key];
 	}
 
 	public static function set($key, $value)
 	{
-		return static::$slim->config($key, $value);
+		return static::$slim->getContainer()['settings'][$key] = $value;
 	}
 }
