@@ -1,5 +1,5 @@
 <?php
-namespace Statical\SlimStatic\Tests;
+namespace Beaver\SlimStatic\Tests;
 
 class Utils
 {

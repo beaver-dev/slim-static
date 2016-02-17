@@ -1,8 +1,8 @@
 <?php
-namespace Statical\SlimStatic\Tests;
+namespace Beaver\SlimStatic\Tests;
 
-use Slim\Slim;
-use Statical\SlimStatic\SlimStatic;
+use Slim\App as Slim;
+use Beaver\SlimStatic\SlimStatic;
 
 class ProxyTest extends \PHPUnit_Framework_TestCase
 {
@@ -26,7 +26,7 @@ class ProxyTest extends \PHPUnit_Framework_TestCase
 
     public function testConfig()
     {
-        $this->app->config('debug', true);
+        $this->app->getContainer()['settings'] = ['debug' => true];
         $this->assertTrue(Config::get('debug'));
     }
 
@@ -43,37 +43,32 @@ class ProxyTest extends \PHPUnit_Framework_TestCase
 
     public function testContainer()
     {
-        $this->assertSame(Container::getInstance(), $this->app->container);
+        $this->assertSame(Container::getInstance(), $this->app->getContainer());
         Container::set('foo', 'bar');
-        $this->assertSame('bar', $this->app->foo);
+        $this->assertSame('bar', $this->app->getContainer()['foo']);
     }
 
     public function testInput()
     {
-        $this->assertSame(Input::getInstance(), $this->app->request);
-    }
-
-    public function testLog()
-    {
-        $this->assertSame(Log::getInstance(), $this->app->log);
+        $this->assertSame(Input::getInstance(), $this->app->getContainer()['request']);
     }
 
     public function testRequest()
     {
-        $this->assertSame(Request::getInstance(), $this->app->request);
+        $this->assertSame(Request::getInstance(), $this->app->getContainer()['request']);
     }
 
     public function testResponse()
     {
-        $this->assertSame(\Response::getInstance(), $this->app->response);
+        $this->assertSame(Response::getInstance(), $this->app->getContainer()['response']);
     }
 
     public function testRoute()
     {
-        Route::get('/home', function () {})->name('named');
-        $expected = Request::getRootUri().'/home';
+        Route::get('/home', function () {})->setName('named');
+        $expected = '/home';
 
-        $this->assertEquals($expected, Route::urlFor('named'));
+        $this->assertEquals($expected, Router::pathFor('named'));
     }
 
     /**
@@ -85,10 +80,5 @@ class ProxyTest extends \PHPUnit_Framework_TestCase
     public function testRouteFailsBadMethod()
     {
         $appName = Route::getName();
-    }
-
-    public function testView()
-    {
-        $this->assertSame(View::getInstance(), $this->app->view);
     }
 }

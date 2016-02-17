@@ -1,8 +1,8 @@
 <?php
-namespace Statical\SlimStatic\Tests;
+namespace Beaver\SlimStatic\Tests;
 
-use Slim\Slim;
-use Statical\SlimStatic\SlimStatic;
+use Slim\App as Slim;
+use Beaver\SlimStatic\SlimStatic;
 
 /**
  * @runTestsInSeparateProcesses
