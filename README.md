@@ -1,9 +1,8 @@
 #SlimStatic
 
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/johnstevenson/slim-static/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/johnstevenson/slim-static/?branch=master)
-[![Build Status](https://travis-ci.org/johnstevenson/slim-static.svg?branch=master)](https://travis-ci.org/johnstevenson/slim-static)
+[![Build Status](https://travis-ci.org/beaver-dev/slim-static.svg?branch=master)](https://travis-ci.org/beaver-dev/slim-static)
 
-Slim PHP static proxy library.
+Slim v3 PHP static proxy library.
 ## Contents
 * [About](#About)
 * [Usage](#Usage)
